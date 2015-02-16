@@ -1,0 +1,11 @@
+html
+    head
+        title="ALTO XML Parser"
+    body
+        h1="ALTO XML Parser"
+        div.source
+            form(name="upload", action="/parse", method="post")
+                input(type="text", name="url", value!=url)
+                input(type="submit", value="parse!")
+        div.txt
+            p!=txt
