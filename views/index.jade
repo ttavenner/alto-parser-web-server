@@ -4,7 +4,7 @@ html
     body
         h1="ALTO XML Parser"
         div.source
-            form(name="upload", action="/parse", method="post")
+            form(name="upload", action="#{formAction}", method="post")
                 input(type="text", name="url", value!=url)
                 input(type="submit", value="parse!")
         div.txt

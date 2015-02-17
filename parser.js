@@ -12,7 +12,7 @@ app.set('view engine', 'jade');
 app.use(bp.urlencoded({extended: false}));
 
 app.get('/alto', function(req, res) {
-    res.render('index');
+    res.render('index', {'formAction': '/alto/parse'});
 });
 
 app.post('/alto/parse', function(req, res) {
