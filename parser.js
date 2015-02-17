@@ -1,7 +1,7 @@
 var xp = require('xml2js');
 
 var host = "localhost";
-var port = 3000;
+var port = 7070;
 
 var exp = require('express');
 var bp = require('body-parser');
@@ -11,11 +11,11 @@ app.set('views', './views');
 app.set('view engine', 'jade');
 app.use(bp.urlencoded({extended: false}));
 
-app.get('/', function(req, res) {
+app.get('/alto', function(req, res) {
     res.render('index');
 });
 
-app.post('/parse', function(req, res) {
+app.post('/alto/parse', function(req, res) {
     getUrl(req.body.url, function(xml) {
         if (xml == null) {
             res.render('index', {txt: "Could not get URL"});
@@ -86,32 +86,3 @@ var parsePage = function(obj, callback) {
         }
     });
 };
-
-/*
-var printHelp = function() {
-    var path = process.argv[1].split('/');
-    var script = path[path.length-1];
-    console.log('Usage:');
-    console.log(process.argv[0] + ' ' + script + " -c [input file].xml [output file].txt to run from the console");
-    console.log(process.argv[0] + ' ' + script + " -s to run in web server mode");
-};
-
-
-if (process.argv.length < 2) {printHelp();}
-
-switch(process.argv[2]) {
-    case '-c':
-        if (process.argv[4].length < 4)
-        {
-            printHelp();
-            break;
-        }
-        parseFile(process.argv[3], process.argv[4]);
-        break;
-    case '-s':
-        startServer();
-        break;
-    default:
-        printHelp();
-        break;
-}*/
