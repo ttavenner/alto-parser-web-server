@@ -1,11 +1,24 @@
+doctype html
 html
-    head
-        title="ALTO XML Parser"
-    body
+head
+    title="ALTO XML Parser"
+    link(rel="stylesheet" href="/css/main.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content="Data Scientist, Information Architect, and Web Developer")
+    meta(name="author" content="Tommy Tavenner")
+    meta(property="twitter:card" content="summary")
+    meta(property="twitter:site" content="@TommyTavenner")
+    meta(property="twitter:description" content="Data Scientist, Information Architect, and Web Developer")
+body
+    #header
+        img#profile(src="/images/profile-pic.png", alt="Profile Picture")
+        h1#name="Tommy Tavenner"
+    #content
         h1="ALTO XML Parser"
-        div.source
+        #source
             form(name="upload", action="#{formAction}", method="post")
-                input(type="text", name="url", value!=url)
-                input(type="submit", value="parse!")
-        div.txt
+                input(type="text", id="url", name="url", value!=url)
+                input(type="submit", id="submit", value="parse!")
+        #txt
             p!=txt
+    include footer.html

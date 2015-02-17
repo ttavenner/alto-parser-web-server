@@ -7,6 +7,8 @@ var exp = require('express');
 var bp = require('body-parser');
 
 var app = exp();
+
+app.use(exp.static(__dirname + '/views'));
 app.set('views', './views');
 app.set('view engine', 'jade');
 app.use(bp.urlencoded({extended: false}));
@@ -18,13 +20,17 @@ app.get('/alto', function(req, res) {
 app.post('/alto/parse', function(req, res) {
     getUrl(req.body.url, function(xml) {
         if (xml == null) {
-            res.render('index', {txt: "Could not get URL"});
+            res.render('index', {
+                'formAction': '/alto/parse',
+                url: req.body.url,
+                txt: "Could not get URL"});
         } else {
             parsedText = "";
             parseXML(xml, function(text) {
                 parsedText += text;
             });
             res.render('index', {
+                'formAction': '/alto/parse',
                 url: req.body.url,
                 txt: parsedText});
         }
